@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 
 public class Main {
-  public static void main(String[] args){
+  public static void main(String[] args) {
     if (args.length < 2) {
       System.out.println("Missing <database path> and <command>");
       return;
@@ -17,7 +17,7 @@ public class Main {
       case ".dbinfo" -> {
         try {
           FileInputStream databaseFile = new FileInputStream(new File(databaseFilePath));
-          
+
           databaseFile.skip(16); // Skip the first 16 bytes of the header
           byte[] pageSizeBytes = new byte[2]; // The following 2 bytes are the page size
           databaseFile.read(pageSizeBytes);
@@ -27,8 +27,7 @@ public class Main {
           // You can use print statements as follows for debugging, they'll be visible when running tests.
           System.out.println("Logs from your program will appear here!");
 
-          // Uncomment this block to pass the first stage
-          // System.out.println("database page size: " + pageSize);
+          System.out.println("database page size: " + pageSize);
         } catch (IOException e) {
           System.out.println("Error reading file: " + e.getMessage());
         }
